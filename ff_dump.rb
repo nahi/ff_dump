@@ -31,7 +31,7 @@ URLS.each do |url|
   JSON.parse(client.get_content(url))['entries'].each do |entry|
     published = entry['published']
     id = entry['id']
-    filename = File.join(DUMP_DIR, "#{published}_#{id}")
+    filename = File.join(DUMP_DIR, "#{published}_#{id}.xml")
     File.open(filename, 'w') do |f|
       f.write(XSD::Mapping.obj2xml(entry, 'entry'))
     end
